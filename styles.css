@@ -87,7 +87,9 @@ nav a:hover {
         left: 0;
         right: 0;
         width: 100%;
-        padding: 1rem 2rem;
+        padding: 0; /* Remove padding */
+        background: transparent !important; /* Make nav background transparent */
+        backdrop-filter: none !important; /* Remove backdrop filter */
         z-index: 1001;
     }
     
@@ -97,6 +99,9 @@ nav a:hover {
         right: 2rem;
         top: 1.5rem;
         z-index: 1002;
+        background: rgba(254, 252, 248, 0.9); /* Keep hamburger background */
+        border-radius: 5px;
+        padding: 0.5rem;
     }
     
     nav ul {
@@ -142,7 +147,6 @@ nav a:hover {
         color: #d4825a;
     }
     
-
     nav ul:not(.active) {
         display: none;
     }
