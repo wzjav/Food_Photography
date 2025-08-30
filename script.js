@@ -231,28 +231,41 @@ contactElements.forEach(el => {
 contactObserver.observe(contactSection);
 
 
-// hamburger function
+// Mobile hamburger menu functionality
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('nav ul');
 const navLinks = document.querySelectorAll('nav a');
+const body = document.body;
 
-hamburger.addEventListener('click', function () {
+hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    body.classList.toggle('menu-open'); // Prevent body scroll
 });
 
 // Close menu when clicking on a nav link
 navLinks.forEach(link => {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function() {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
     });
 });
 
 // Close menu when clicking outside
-document.addEventListener('click', function (e) {
+document.addEventListener('click', function(e) {
     if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+});
+
+// Close menu on window resize if screen becomes larger
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 550) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
     }
 });
