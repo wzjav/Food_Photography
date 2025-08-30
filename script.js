@@ -229,3 +229,30 @@ contactElements.forEach(el => {
     el.style.transition = 'all 0.6s ease';
 });
 contactObserver.observe(contactSection);
+
+
+// hamburger function
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+const navLinks = document.querySelectorAll('nav a');
+
+hamburger.addEventListener('click', function () {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking on a nav link
+navLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function (e) {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
